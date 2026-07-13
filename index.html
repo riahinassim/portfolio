@@ -1,1030 +1,464 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nassim Riahi - Développeur BI & Data Analyst</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #3b82f6;
-            --secondary-color: #8b5cf6;
-            --accent-color: #06b6d4;
-            --bg-dark: #0f172a;
-            --bg-card: rgba(30, 41, 59, 0.8);
-            --text-light: #e2e8f0;
-            --text-muted: #94a3b8;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riahi Nassim — BI Developer & Data Analyst</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    :root {
+      --background: oklch(0.113 0.023 254);
+      --foreground: oklch(0.928 0.007 247);
+      --card:       oklch(0.155 0.025 253 / .85);
+      --primary:    oklch(0.623 0.214 251);
+      --secondary:  oklch(0.553 0.222 283);
+      --accent:     oklch(0.719 0.162 201);
+      --muted-fg:   oklch(0.673 0.022 250);
+      --border:     oklch(0.623 0.214 251 / .2);
+      --border-h:   oklch(0.623 0.214 251 / .45);
+      --radius:     0.625rem;
+      --mono:       'Courier New', monospace;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: var(--text-light);
-            overflow-x: hidden;
-        }
+    
+    @keyframes word-reveal {
+      0%  { opacity:0; filter:blur(24px); transform:translateY(24px) }
+      60% { filter:blur(3px); opacity:.85 }
+      100%{ opacity:1; filter:blur(0); transform:translateY(0) }
+    }
+    @keyframes fade-up      { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes glitch-shift { 0%,100%{transform:translate(0)} 33%{transform:translate(-2px,2px)} 66%{transform:translate(2px,-2px)} }
+    @keyframes pulse-dot    { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
+    @keyframes shimmer      { 0%{transform:translateX(-100%)} 100%{transform:translateX(200%)} }
 
-        /* Particles Background */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
+    .word-reveal  { opacity:0; animation:word-reveal 1.2s cubic-bezier(.16,1,.3,1) .2s forwards }
+    .word-reveal-d{ opacity:0; animation:word-reveal 1.2s cubic-bezier(.16,1,.3,1) .5s forwards }
+    .glitch-layer { animation:glitch-shift 5s infinite ease-in-out }
+    .fade-up      { opacity:0 }
+    .fade-up.in   { animation:fade-up .7s ease forwards }
 
-        /* Navbar */
-        .navbar {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
+    
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--primary) var(--background)}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-thumb{background:var(--primary);border-radius:3px}
+    body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--background);color:var(--foreground);overflow-x:hidden}
+    #particles-js{position:fixed;inset:0;z-index:0}
+    #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));z-index:9999}
 
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-color) !important;
-        }
+    
+    .navbar{background:oklch(0.113 0.023 254/.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:1000;transition:all .3s}
+    .navbar-brand{font-weight:700;font-size:1.4rem;color:var(--primary)!important}
+    .nav-link{color:var(--foreground)!important;transition:color .2s;position:relative}
+    .nav-link:hover{color:var(--primary)!important}
+    .nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--primary);transition:width .3s}
+    .nav-link:hover::after{width:100%}
 
-        .nav-link {
-            color: var(--text-light) !important;
-            margin: 0 0.5rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+  
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;z-index:1;padding:100px 20px}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:oklch(0.623 0.214 251/.1);border:1px solid oklch(0.623 0.214 251/.3);border-radius:50px;padding:6px 16px;font-size:.78rem;color:var(--primary);margin-bottom:1.5rem;font-family:var(--mono)}
+    .hero-badge .dot{width:8px;height:8px;background:oklch(.72 .17 142);border-radius:50%;animation:pulse-dot 2s infinite}
+    .hero h1{font-size:4rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .subtitle{font-size:1.8rem;color:var(--accent);margin-bottom:1.5rem}
+    .hero-desc{max-width:600px;margin:0 auto 2rem;opacity:.85}
 
-        .nav-link:hover {
-            color: var(--primary-color) !important;
-        }
+   
+    .btn-grad{display:inline-flex;align-items:center;gap:.5rem;padding:12px 28px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;text-decoration:none;border-radius:50px;font-weight:600;transition:all .3s;box-shadow:0 4px 15px oklch(0.623 0.214 251/.3)}
+    .btn-grad:hover{transform:translateY(-3px);box-shadow:0 6px 22px oklch(0.623 0.214 251/.5);color:#fff}
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
-        }
+    
+    .hero-stats{display:flex;justify-content:center;gap:2.5rem;margin-top:3rem;flex-wrap:wrap}
+    .stat-card{text-align:center;padding:1.75rem;background:var(--card);border-radius:calc(var(--radius)*2);border:1px solid var(--border);min-width:140px;backdrop-filter:blur(10px);transition:border-color .3s}
+    .stat-card:hover{border-color:var(--border-h)}
+    .stat-number{display:block;font-size:3rem;font-weight:800;color:var(--primary);font-family:var(--mono)}
+    .stat-label{margin-top:.4rem;color:var(--muted-fg);font-size:.88rem}
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
+    section{padding:80px 0;position:relative;z-index:1}
+    .sec-alt{background:oklch(0.155 0.025 253/.5)}
+    .section-title{text-align:center;font-size:2.4rem;font-weight:800;margin-bottom:3rem}
+    .section-title i{color:var(--primary);margin-right:.75rem}
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            padding: 100px 20px;
-        }
+  
+    .dash-card{background:var(--card);border-radius:calc(var(--radius)*2);padding:1.75rem;border:1px solid var(--border);transition:all .3s;height:100%;backdrop-filter:blur(10px)}
+    .dash-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px oklch(0.623 0.214 251/.25);border-color:var(--border-h)}
+    .card-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem}
+    .card-icon{width:46px;height:46px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+    .card-ttl{font-size:1.15rem;font-weight:700}
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    .skill-bar{margin-bottom:1.25rem}
+    .skill-row{display:flex;justify-content:space-between;margin-bottom:5px;font-weight:600;font-size:.9rem}
+    .skill-pct{color:var(--muted-fg);font-family:var(--mono)}
+    .skill-track{height:6px;background:oklch(1 0 0/.07);border-radius:10px;overflow:hidden}
+    .skill-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:10px}
+    .skill-tag{background:oklch(0.623 0.214 251/.08);border:1px solid oklch(0.623 0.214 251/.25);padding:10px 14px;border-radius:10px;text-align:center;font-weight:600;font-size:.88rem;display:flex;align-items:center;justify-content:center;gap:7px;transition:all .25s;height:100%}
+    .skill-tag:hover{background:oklch(0.623 0.214 251/.15);transform:translateY(-2px)}
+    .skill-tag i{color:var(--primary)}
 
-        .subtitle {
-            font-size: 1.8rem;
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
-        }
+    .timeline{position:relative;padding:2rem 0}
+    .timeline::before{content:'';position:absolute;left:50%;transform:translateX(-50%);width:2px;height:100%;background:linear-gradient(180deg,var(--primary),var(--secondary))}
+    .timeline-item{display:flex;margin-bottom:3rem;position:relative}
+    .timeline-item:nth-child(odd){flex-direction:row-reverse}
+    .timeline-date{flex:0 0 45%;text-align:right;padding-right:3rem;font-weight:600;color:var(--accent);font-family:var(--mono)}
+    .timeline-item:nth-child(odd) .timeline-date{text-align:left;padding:0 0 0 3rem}
+    .timeline-content{flex:0 0 45%;background:var(--card);padding:1.75rem;border-radius:calc(var(--radius)*2);border:1px solid var(--border);transition:border-color .3s}
+    .timeline-content:hover{border-color:var(--border-h)}
+    .company-logo{width:72px;height:72px;object-fit:contain;display:block;margin:0 auto 1.25rem;padding:8px;background:oklch(1 0 0/.07);border-radius:10px;border:1px solid var(--border)}
+    .timeline-content h3{color:var(--primary);font-size:1.2rem;margin-bottom:.75rem}
+    .timeline-content ul{list-style:none;padding:0}
+    .timeline-content li{padding-left:1.4rem;margin-bottom:.4rem;position:relative;font-size:.9rem;color:var(--muted-fg)}
+    .timeline-content li::before{content:'▹';position:absolute;left:0;color:var(--accent)}
 
-        /* CV Download Buttons */
-        .cv-download-section h5 {
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
+    .c-icon{width:46px;height:46px;background:linear-gradient(135deg,oklch(0.623 0.214 251/.2),oklch(0.553 0.222 283/.2));border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--primary);margin:0 auto .5rem}
 
-        .btn-cv-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
+    .project-img{width:100%;max-height:300px;object-fit:cover;border-radius:calc(var(--radius)*1.5);margin-bottom:1.5rem;border:1px solid var(--border)}
+    .project-tag{background:oklch(0.623 0.214 251/.1);border:1px solid oklch(0.623 0.214 251/.3);padding:5px 14px;border-radius:50px;font-size:.78rem;font-weight:600;color:var(--primary)}
 
-        .btn-cv-download:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
-            color: white;
-        }
+    footer{background:oklch(0.113 0.023 254/.97);border-top:1px solid var(--border);padding:2.5rem 0;text-align:center;position:relative;z-index:1}
+    .social-links{display:flex;justify-content:center;gap:1rem;margin:1.5rem 0}
+    .social-link{width:46px;height:46px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;transition:all .3s}
+    .social-link:hover{transform:translateY(-4px);box-shadow:0 5px 15px oklch(0.623 0.214 251/.5)}
 
-        .btn-primary-custom {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
+    #scroll-top{position:fixed;bottom:1.8rem;right:1.8rem;width:42px;height:42px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;z-index:999;opacity:0;transform:translateY(20px);transition:all .3s;border:none}
+    #scroll-top.show{opacity:1;transform:translateY(0)}
+    #scroll-top:hover{transform:translateY(-3px)}
 
-        .btn-primary-custom:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
-            color: white;
-        }
-
-        /* Hero Stats */
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--bg-card);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            min-width: 150px;
-        }
-
-        .stat-number {
-            display: block;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .stat-label {
-            display: block;
-            margin-top: 0.5rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Sections */
-        section {
-            padding: 80px 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: var(--text-light);
-        }
-
-        .section-title i {
-            color: var(--primary-color);
-            margin-right: 1rem;
-        }
-
-        /* Dashboard Cards */
-        .dashboard-card {
-            background: var(--bg-card);
-            border-radius: 15px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-
-        .dashboard-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-        }
-
-        .card-header-custom {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-date {
-            flex: 0 0 45%;
-            text-align: right;
-            padding-right: 3rem;
-            font-weight: 600;
-            color: var(--accent-color);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-date {
-            text-align: left;
-            padding-right: 0;
-            padding-left: 3rem;
-        }
-
-        .timeline-content {
-            flex: 0 0 45%;
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            position: relative;
-        }
-
-        .company-logo {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            margin: 0 auto 1.5rem auto;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            display: block;
-        }
-
-        .timeline-content h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .timeline-content ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .timeline-content ul li {
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            position: relative;
-        }
-
-        .timeline-content ul li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-        }
-
-        /* Skills */
-        .skill-bar {
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .skill-progress {
-            height: 10px;
-            background: rgba(148, 163, 184, 0.2);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .skill-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            border-radius: 10px;
-            transition: width 1s ease;
-        }
-
-        /* Skill Tags */
-        .skill-tag {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            padding: 10px 15px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            height: 100%;
-        }
-
-        .skill-tag:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .skill-tag i {
-            color: var(--primary-color);
-            font-size: 1.1rem;
-        }
-
-        /* Contact Form */
-        .contact-form {
-            background: var(--bg-card);
-            padding: 3rem;
-            border-radius: 15px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .form-control {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: var(--text-light);
-            padding: 12px 20px;
-            margin-bottom: 1.5rem;
-            border-radius: 10px;
-        }
-
-        .form-control:focus {
-            background: rgba(15, 23, 42, 0.7);
-            border-color: var(--primary-color);
-            color: var(--text-light);
-            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
-        }
-
-        .form-control::placeholder {
-            color: var(--text-muted);
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(15, 23, 42, 0.95);
-            padding: 3rem 0;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.5);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .subtitle {
-                font-size: 1.3rem;
-            }
-
-            .hero-stats {
-                gap: 1rem;
-            }
-
-            .timeline::before {
-                left: 0;
-            }
-
-            .timeline-item {
-                flex-direction: column !important;
-            }
-
-            .timeline-date {
-                text-align: left !important;
-                padding: 0 0 1rem 2rem !important;
-            }
-
-            .timeline-content {
-                margin-left: 2rem;
-            }
-        }
-    </style>
+    @media(max-width:768px){
+      .hero h1{font-size:2.5rem}
+      .subtitle{font-size:1.3rem}
+      .timeline::before{left:0}
+      .timeline-item{flex-direction:column!important}
+      .timeline-date{text-align:left!important;padding:0 0 1rem 2rem!important}
+      .timeline-content{margin-left:2rem}
+    }
+  </style>
 </head>
 <body>
-    <div id="particles-js"></div>
-    
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-chart-line"></i> Nassim Riahi</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard BI</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience">Expérience</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
+  <div id="particles-js"></div>
+  <div id="progress"></div>
+  <button id="scroll-top"><i class="fas fa-chevron-up"></i></button>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fas fa-chart-line glitch-layer"></i> Nassim Riahi</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard BI</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Expérience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-badge"><span class="dot"></span> Développeur BI</div>
+      <h1 class="word-reveal"><i class="fas fa-database"></i> Nassim Riahi</h1>
+      <p class="subtitle word-reveal-d">Développeur Business Intelligence & Data Analyst</p>
+      <p class="hero-desc fade-up">Expert en transformation de données brutes en insights stratégiques. Spécialisé en Power BI, SQL, Python et solutions BI innovantes.</p>
+
+      <div class="mb-4 fade-up">
+        <p style="font-size:.8rem;color:var(--muted-fg);font-family:var(--mono);margin-bottom:.6rem">
+          <i class="fas fa-file-download" style="color:var(--primary)"></i> Télécharger mon CV
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="cv/Riahi_Nassim_CV(francais).pdf" download class="btn-grad"><i class="fas fa-download"></i> Français</a>
+          <a href="cv/Riahi_Nassim_CV(anglais).pdf"  download class="btn-grad"><i class="fas fa-download"></i> English</a>
+        </div>
+      </div>
+
+      <div class="fade-up">
+        <a href="#dashboard" class="btn-grad"><i class="fas fa-chart-bar"></i> Voir mon Dashboard</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card"><span class="stat-number" data-target="+1">0</span><span class="stat-label">an d'Expérience</span></div>
+        <div class="stat-card"><span class="stat-number" data-target="27">0</span><span class="stat-label">Projets Réalisés</span></div>
+        <div class="stat-card"><span class="stat-number" data-target="10">0</span><span class="stat-label">Technologies Maîtrisées</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard" class="sec-alt">
+    <div class="container">
+      <h2 class="section-title fade-up"><i class="fas fa-chart-pie"></i> Mon Dashboard BI</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-chart-bar"></i></div><h3 class="card-ttl">Répartition des Compétences</h3></div>
+            <canvas id="skillsChart"></canvas>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-language"></i></div><h3 class="card-ttl">Niveau de Langues en %</h3></div>
+            <canvas id="languagesChart"></canvas>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-chart-line"></i></div><h3 class="card-ttl">Évolution de mes Compétences en %</h3></div>
+            <canvas id="evolutionChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title fade-up"><i class="fas fa-briefcase"></i> Expérience Professionnelle</h2>
+      <div class="timeline">
+
+        <div class="timeline-item fade-up">
+          <div class="timeline-date">Juil. 2025 — Présent</div>
+          <div class="timeline-content">
+            <img src="sicam.png" alt="SICAM" class="company-logo" onerror="this.style.display='none'">
+            <h3><i class="fas fa-building"></i> Développeur BI — SICAM Tunisia</h3>
+            <ul>
+              <li>Développement de rapports BI pour le suivi agricole</li>
+              <li>Conception de dashboards temps-réel pour l'optimisation production</li>
+              <li>Création de tableaux de bord commercial - sage x3</li>
+              <li>Processus ETL avec Python et consommation d'APIs REST</li>
+              <li>Création d'un tableau de bord financier : évolution des soldes bancaires</li>
+              <li>Création d'un tableau de bord financier  : Escompte</li>
+              <li>Création d'un tableau de bord financier  : Trésorerie</li>
+              <li>Création d'un tableau de bord financier  : BFR - sage x3</li>
+              <li>Création de tableau de bord Stock : état des stocks par lot à date – Sage X3</li>
+              <li>Création de tableau de bord commercial : CA vs Budget</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-up">
+          <div class="timeline-date">Fév. 2025 — Mai 2025</div>
+          <div class="timeline-content">
+            <img src="tekboot.png" alt="Tekboot" class="company-logo" onerror="this.style.display='none'">
+            <h3><i class="fas fa-robot"></i> Stage PFE IA & BI — Tekboot Solutions</h3>
+            <ul>
+              <li>Système de recommandation IA (matching CV/offres)</li>
+              <li>Utilisation OpenAI embeddings via LangChain</li>
+              <li>Interface Streamlit avec MongoDB</li>
+              <li>Création de dashboards analytiques de performance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item fade-up">
+          <div class="timeline-date">Juin 2024 — Août 2024</div>
+          <div class="timeline-content">
+            <img src="mob.png" alt="Mobelite" class="company-logo" onerror="this.style.display='none'">
+            <h3><i class="fas fa-laptop-code"></i> Développeur Web — Mobelite Labs</h3>
+            <ul>
+              <li>Création site web avec Symfony</li>
+              <li>Gestion d'articles de dessin animé</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="sec-alt">
+    <div class="container">
+      <h2 class="section-title fade-up"><i class="fas fa-diagram-project"></i> Projets Personnels</h2>
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-9">
+          <div class="dash-card fade-up">
+            <img src="skill.png" alt="SkillSwap" class="project-img" onerror="this.style.display='none'">
+            <div class="card-head">
+              <div class="card-icon"><i class="fas fa-people-arrows"></i></div>
+              <h3 class="card-ttl">SkillSwap — Plateforme d'échange de compétences entre voisins</h3>
+            </div>
+            <p style="color:var(--muted-fg);margin-bottom:1.25rem">
+              Plateforme communautaire permettant aux habitants d'une même région d'échanger leurs
+              compétences (bricolage, cours particuliers, jardinage, cuisine, etc.) sans transaction
+              monétaire, en mettant en relation les voisins autour de leurs savoir-faire respectifs.
+            </p>
+            <ul style="list-style:none;padding:0;margin-bottom:1.25rem">
+              <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
+                <span style="position:absolute;left:0;color:var(--accent)">▹</span>
+                Modélisation d'un <strong>Data Warehouse</strong> avec <strong>Talend</strong> pour centraliser les profils, les compétences et l'historique des échanges
+              </li>
+              <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
+                <span style="position:absolute;left:0;color:var(--accent)">▹</span>
+                Construction de pipelines ETL avec Talend Open Studio pour l'intégration et la qualité des données
+              </li>
+              <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
+                <span style="position:absolute;left:0;color:var(--accent)">▹</span>
+                Mise en place d'un modèle <strong>Prophet</strong> basé sur les séries temporelles pour prévoir le volume d'échanges de compétences à 5 mois
+              </li>
+              <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
+                <span style="position:absolute;left:0;color:var(--accent)">▹</span>
+                Tableaux de bord de suivi des tendances d'échange par région et par catégorie de compétence
+              </li>
+            </ul>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="project-tag">Talend</span>
+              <span class="project-tag">Data Warehouse</span>
+              <span class="project-tag">Prophet</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Séries Temporelles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title fade-up"><i class="fas fa-cogs"></i> Compétences Techniques</h2>
+      <div class="row g-4">
+
+        <div class="col-md-6">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-chart-line"></i></div><h3 class="card-ttl">Data & Business Intelligence</h3></div>
+            <div class="skill-bar"><div class="skill-row"><span>Power BI</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>SQL Server</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>Python (ETL)</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>PostgreSQL</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>MongoDB</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-fill" style="width:75%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>Talend <small style="color:var(--muted-fg);font-weight:400">(depuis 2026)</small></span><span class="skill-pct">70%</span></div><div class="skill-track"><div class="skill-fill" style="width:70%"></div></div></div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-code"></i></div><h3 class="card-ttl">Langages de Programmation</h3></div>
+            <div class="skill-bar"><div class="skill-row"><span>PHP</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>Python</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>Java</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-fill" style="width:75%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>SQL</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>C</span><span class="skill-pct">65%</span></div><div class="skill-track"><div class="skill-fill" style="width:65%"></div></div></div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-layer-group"></i></div><h3 class="card-ttl">Frameworks & Outils</h3></div>
+            <div class="row g-2">
+              <div class="col-6"><div class="skill-tag"><i class="fab fa-laravel"></i> Laravel</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-globe"></i> Symfony</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-terminal"></i> MobaXterm</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-code"></i> Visual Studio</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-code"></i> Zed</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-code"></i> intelliJ</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-code"></i> Talend Open Studio</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-code"></i> Power Query</div></div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-brain"></i></div><h3 class="card-ttl">IA & Machine Learning</h3></div>
+            <div class="row g-2">
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-robot"></i> OpenAI</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-link"></i> LangChain</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-comments"></i> NLP</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-search"></i> RAG</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-chart-line"></i> Prophet</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-cloud"></i></div><h3 class="card-ttl">DevOps & Cloud Computing</h3></div>
+            <div class="row text-center g-3">
+              <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fab fa-docker"></i></div><p class="mb-0 small">Docker</p></div>
+              <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fab fa-git-alt"></i></div><p class="mb-0 small">Git</p></div>
+              <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fas fa-stream"></i></div><p class="mb-0 small">Streamlit</p></div>
+              <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fab fa-aws"></i></div><p class="mb-0 small">AWS</p></div>
             </div>
         </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1><i class="fas fa-database"></i> Nassim Riahi</h1>
-                <p class="subtitle">Développeur Business Intelligence & Data Analyst</p>
-                <p style="max-width: 600px; margin: 0 auto 30px; opacity: 0.9;">
-                    Expert en transformation de données brutes en insights stratégiques. 
-                    Spécialisé en Power BI, SQL, Python et solutions BI innovantes.
-                </p>
-                
-                <!-- CV Download Buttons -->
-                <div class="cv-download-section mb-4">
-                    <h5 class="mb-3" style="color: var(--text-light);">
-                        <i class="fas fa-file-download"></i> Télécharger mon CV
-                    </h5>
-                    <div class="d-flex flex-wrap justify-content-center gap-3">
-                        <a href="cv/Riahi_Nassim_CV(francais).pdf" download class="btn-cv-download">
-                            <i class="fas fa-flag"></i> Français
-                        </a>
-                        <a href="cv/Riahi_Nassim_CV(anglais).pdf" download class="btn-cv-download">
-                            <i class="fas fa-flag-usa"></i> English
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <a href="#dashboard" class="btn-primary-custom">
-                        <i class="fas fa-chart-bar"></i> Voir mon Dashboard
-                    </a>
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="stat-card">
-                        <span class="stat-number" data-target="7"></span>
-                        <span class="stat-label">Mois d'Expérience</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number" data-target="10">0</span>
-                        <span class="stat-label">Projets Réalisés     </span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-number" data-target="8">0</span>
-                        <span class="stat-label">Technologies/Outils Maîtrisées</span>
-                    </div>
-                </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="sec-alt">
+    <div class="container">
+      <h2 class="section-title fade-up"><i class="fas fa-envelope"></i> Contactez-moi</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="row text-center g-4">
+            <div class="col-md-4 fade-up">
+              <div class="c-icon"><i class="fas fa-phone"></i></div>
+              <p style="margin-top:.5rem">+216 99-262-189</p>
             </div>
-        </div>
-    </section>
-    
-    <!-- Dashboard BI Section -->
-    <section id="dashboard" style="background: rgba(30, 41, 59, 0.5);">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-chart-pie"></i> Mon Dashboard BI</h2>
-            
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="dashboard-card">
-                        <div class="card-header-custom">
-                            <div class="card-icon"><i class="fas fa-code"></i></div>
-                            <h3 class="card-title">Répartition des Compétences</h3>
-                        </div>
-                        <canvas id="skillsChart"></canvas>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-4">
-                    <div class="dashboard-card">
-                        <div class="card-header-custom">
-                            <!-- CHANGEMENT D'ICÔNE ICI -->
-                            <div class="card-icon"><i class="fas fa-language"></i></div>
-                            <!-- TITRE MODIFIÉ ICI -->
-                            <h3 class="card-title">Niveau de Langues en %</h3>
-                        </div>
-                        <canvas id="languagesChart"></canvas>
-                    </div>
-                </div>
-                
-                <div class="col-md-12 mb-4">
-                    <div class="dashboard-card">
-                        <div class="card-header-custom">
-                            <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
-                            <h3 class="card-title">Évolution de mes Compétences en %</h3>
-                        </div>
-                        <canvas id="evolutionChart"></canvas>
-                    </div>
-                </div>
+            <div class="col-md-4 fade-up">
+              <div class="c-icon"><i class="fas fa-envelope"></i></div>
+              <p style="margin-top:.5rem">riahinassim074@gmail.com</p>
             </div>
-        </div>
-    </section>
-    
-    <!-- Experience Timeline -->
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-briefcase"></i> Expérience Professionnelle</h2>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">Juil. 2025 - Présent</div>
-                    <div class="timeline-content">
-                        <img src="sicam.png" alt="SICAM Tunisia Logo" class="company-logo">
-                        <h3><i class="fas fa-building"></i> Développeur BI - SICAM Tunisia</h3>
-                        <p class="text-muted mb-3">Stage puis Contrat (Octobre 2025 - Présent)</p>
-                        <ul>
-                            <li>Développement de rapports BI pour le suivi agricole</li>
-                            <li>Conception de dashboards temps-réel pour l'optimisation production</li>
-                            <li>Création de tableaux de bord CA pour pilotage commercial</li>
-                            <li>Développement de tableaux XRT pour transactions bancaires</li>
-                            <li>Processus ETL avec Python et consommation d'APIs REST</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">Fév. 2025 - Mai 2025</div>
-                    <div class="timeline-content">
-                        <img src="tekboot.png" alt="Tekboot Solutions Logo" class="company-logo">
-                        <h3><i class="fas fa-robot"></i> Stage PFE IA & BI - Tekboot Solutions</h3>
-                        <ul>
-                            <li>Système de recommandation IA pour matching CV/offres</li>
-                            <li>Utilisation OpenAI embeddings via LangChain</li>
-                            <li>Interface Streamlit avec MongoDB</li>
-                            <li>Création de dashboards analytiques de performance</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">Juin 2024 - Août 2024</div>
-                    <div class="timeline-content">
-                        <img src="mob.png" alt="Mobelite Labs Logo" class="company-logo">
-                        <h3><i class="fas fa-laptop-code"></i> Développeur Web - Mobelite Labs</h3>
-                        <ul>
-                            <li>Création site web avec Symfony</li>
-                            <li>Gestion d'articles de dessin animé</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="col-md-4 fade-up">
+              <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <p style="margin-top:.5rem">Béja, Tunisie</p>
             </div>
+          </div>
         </div>
-    </section>
-    
-    <!-- Skills Section -->
-    <section id="skills" style="background: rgba(30, 41, 59, 0.5);">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-cogs"></i> Compétences Techniques</h2>
-            
-            <div class="row">
-                <!-- Data & BI -->
-                <div class="col-md-6 mb-4">
-                    <div class="dashboard-card">
-                        <h3 class="mb-4"><i class="fas fa-chart-line"></i> Data & Business Intelligence</h3>
-                        <div class="skill-bar">
-                            <div class="skill-name"><span>Power BI</span><span>90%</span></div>
-                            <div class="skill-progress"><div class="skill-progress-bar" style="width: 90%"></div></div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name"><span>SQL Server</span><span>85%</span></div>
-                            <div class="skill-progress"><div class="skill-progress-bar" style="width: 85%"></div></div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name"><span>Python (ETL)</span><span>80%</span></div>
-                            <div class="skill-progress"><div class="skill-progress-bar" style="width: 80%"></div></div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name"><span>PostgreSQL</span><span>80%</span></div>
-                            <div class="skill-progress"><div class="skill-progress-bar" style="width: 80%"></div></div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name"><span>MongoDB</span><span>75%</span></div>
-                            <div class="skill-progress"><div class="skill-progress-bar" style="width: 75%"></div></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Langages de Programmation -->
-                <div class="col-md-6 mb-4">
-                    <div class="dashboard-card">
-                        <h3 class="mb-4"><i class="fas fa-code"></i> Langages de Programmation</h3>
-                        <div class="skill-bar">
-                            <div class="skill-name"><span>PHP</span><span>85%</span></div>
-                            <div class="skill-progress"><div class="skill-progress-bar" style="width: 85%"></div></div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name"><span>Python</span><span>80%</span></div>
-                            <div class="skill-progress"><div class="skill-progress-bar" style="width: 80%"></div></div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name"><span>Java</span><span>75%</span></div>
-                            <div class="skill-progress"><div class="skill-progress-bar" style="width: 75%"></div></div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name"><span>SQL</span><span>85%</span></div>
-                            <div class="skill-progress"><div class="skill-progress-bar" style="width: 85%"></div></div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name"><span>C</span><span>65%</span></div>
-                            <div class="skill-progress"><div class="skill-progress-bar" style="width: 65%"></div></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Frameworks -->
-                <div class="col-md-6 mb-4">
-                    <div class="dashboard-card">
-                        <h3 class="mb-4"><i class="fas fa-layer-group"></i> Frameworks & Outils</h3>
-                        <div class="row">
-                            <div class="col-6 mb-3">
-                                <div class="skill-tag"><i class="fab fa-laravel"></i> Laravel</div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="skill-tag"><i class="fab fa-symfony"></i> Symfony</div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="skill-tag"><i class="fas fa-chart-bar"></i> Power BI</div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="skill-tag"><i class="fab fa-python"></i> IDLE Python</div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="skill-tag"><i class="fas fa-terminal"></i> MobaXterm</div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="skill-tag"><i class="fas fa-code"></i> Visual Studio</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- IA & Machine Learning -->
-                <div class="col-md-6 mb-4">
-                    <div class="dashboard-card">
-                        <h3 class="mb-4"><i class="fas fa-brain"></i> IA & Machine Learning</h3>
-                        <div class="row">
-                            <div class="col-6 mb-3">
-                                <div class="skill-tag"><i class="fas fa-robot"></i> OpenAI</div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="skill-tag"><i class="fas fa-link"></i> LangChain</div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="skill-tag"><i class="fas fa-comments"></i> NLP</div>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="skill-tag"><i class="fas fa-search"></i> RAG</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- DevOps & Cloud -->
-                <div class="col-md-12 mb-4">
-                    <div class="dashboard-card">
-                        <h3 class="mb-4"><i class="fas fa-cloud"></i> DevOps & Cloud Computing</h3>
-                        <div class="row">
-                            <div class="col-md-2 col-6 text-center mb-3">
-                                <div class="card-icon mx-auto mb-2"><i class="fab fa-docker"></i></div>
-                                <p class="mb-0">Docker</p>
-                            </div>
-                            <div class="col-md-2 col-6 text-center mb-3">
-                                <div class="card-icon mx-auto mb-2"><i class="fab fa-git-alt"></i></div>
-                                <p class="mb-0">Git</p>
-                            </div>
-                            <div class="col-md-2 col-6 text-center mb-3">
-                                <div class="card-icon mx-auto mb-2"><i class="fas fa-stream"></i></div>
-                                <p class="mb-0">Streamlit</p>
-                            </div>
-                            <div class="col-md-2 col-6 text-center mb-3">
-                                <div class="card-icon mx-auto mb-2"><i class="fab fa-aws"></i></div>
-                                <p class="mb-0">AWS</p>
-                            </div>
-                            <div class="col-md-2 col-6 text-center mb-3">
-                                <div class="card-icon mx-auto mb-2"><i class="fas fa-database"></i></div>
-                                <p class="mb-0">PostgreSQL</p>
-                            </div>
-                            <div class="col-md-2 col-6 text-center mb-3">
-                                <div class="card-icon mx-auto mb-2"><i class="fas fa-leaf"></i></div>
-                                <p class="mb-0">MongoDB</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-envelope"></i> Contactez-moi</h2>
-            
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                        <div class="row mt-5 text-center">
-                            <div class="col-md-4 mb-3">
-                                <div class="card-icon mx-auto mb-2"><i class="fas fa-phone"></i></div>
-                                <p>+216 99-262-189</p>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card-icon mx-auto mb-2"><i class="fas fa-envelope"></i></div>
-                                <p>riahinassim074@gmail.com</p>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="card-icon mx-auto mb-2"><i class="fas fa-map-marker-alt"></i></div>
-                                <p>Tunis, Tunisie</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <h3 class="mb-3">Nassim Riahi</h3>
-            <p>Développeur BI & Data Analyst | Transformez vos données en décisions</p>
-            
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/nassim-riahi-92b029399" target="_blank" class="social-link">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
-    <script>
-        // Particles.js Configuration
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: '#3b82f6' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.5, random: false },
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: '#3b82f6', opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                modes: { grab: { distance: 140, line_linked: { opacity: 1 } }, push: { particles_nb: 4 } }
-            },
-            retina_detect: true
-        });
+      </div>
+    </div>
+  </section>
 
-        // Counter Animation
-        const counters = document.querySelectorAll('.stat-number');
-        const speed = 200;
+  <footer>
+    <div class="container">
+      <h3 class="mb-2">Nassim Riahi</h3>
+      <p style="color:var(--muted-fg)">Développeur BI & Data Analyst | Transformez vos données en décisions</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/nassim-riahi-92b029399" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:riahinassim074@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p style="font-size:.8rem;color:var(--muted-fg)">© 2026 Riahi Nassim</p>
+    </div>
+  </footer>
 
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / speed;
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js',{particles:{number:{value:60,density:{enable:true,value_area:800}},color:{value:'#3b82f6'},shape:{type:'circle'},opacity:{value:.35,random:true},size:{value:2,random:true},line_linked:{enable:true,distance:150,color:'#3b82f6',opacity:.2,width:1},move:{enable:true,speed:1.5,random:true,out_mode:'out'}},interactivity:{detect_on:'canvas',events:{onhover:{enable:true,mode:'grab'},resize:true},modes:{grab:{distance:140,line_linked:{opacity:.4}}}},retina_detect:true});
 
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            updateCount();
-        });
+    const prog=document.getElementById('progress'),topBtn=document.getElementById('scroll-top');
+    window.addEventListener('scroll',()=>{
+      const h=document.documentElement;
+      prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+      topBtn.classList.toggle('show',window.scrollY>400);
+    });
+    topBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth',block:'start'})}));
 
-        // Chart.js - Skills Chart (Radar)
-        const skillsCtx = document.getElementById('skillsChart').getContext('2d');
-        new Chart(skillsCtx, {
-            type: 'radar',
-            data: {
-                labels: ['Power BI', 'SQL', 'Python', 'PHP', 'Java', 'MongoDB'],
-                datasets: [{
-                    label: 'Niveau de Compétence',
-                    data: [90, 85, 80, 85, 75, 75],
-                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                    borderColor: '#3b82f6',
-                    borderWidth: 2,
-                    pointBackgroundColor: '#3b82f6',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#3b82f6',
-                    pointRadius: 4,
-                    pointHoverRadius: 6
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                scales: {
-                    r: {
-                        beginAtZero: true,
-                        max: 100,
-                        ticks: { 
-                            color: '#94a3b8',
-                            backdropColor: 'transparent',
-                            stepSize: 20
-                        },
-                        grid: { color: 'rgba(148, 163, 184, 0.2)' },
-                        pointLabels: { 
-                            color: '#e2e8f0',
-                            font: { size: 13, weight: '500' }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: { 
-                        position: 'top', 
-                        labels: { 
-                            color: '#e2e8f0', 
-                            padding: 20,
-                            font: { size: 12 }
-                        } 
-                    }
-                }
-            }
-        });
+    const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in')}),{threshold:.15});
+    document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
 
-        // MODIFIÉ ICI : Chart.js - Languages Chart (Doughnut)
-        const languagesCtx = document.getElementById('languagesChart').getContext('2d');
-        new Chart(languagesCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Français', 'Anglais', 'Italien'],
-                datasets: [{
-                    data: [60, 30, 10], // Français a la plus grosse partie, puis Anglais, puis Italien
-                    backgroundColor: [
-                        'rgba(59, 130, 246, 0.8)', // Bleu pour Français
-                        'rgba(139, 92, 246, 0.8)', // Violet pour Anglais
-                        'rgba(6, 182, 212, 0.8)'   // Cyan pour Italien
-                    ],
-                    borderColor: '#1e293b',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                plugins: {
-                    legend: { 
-                        position: 'bottom',
-                        labels: { 
-                            color: '#e2e8f0',
-                            font: { size: 12 },
-                            padding: 20
-                        } 
-                    }
-                },
-                cutout: '65%'
-            }
-        });
+    let done=false;
+    new IntersectionObserver(e=>{
+      if(!e[0].isIntersecting||done)return; done=true;
+      document.querySelectorAll('.stat-number').forEach(el=>{
+        const t=+el.dataset.target;let n=0;
+        const tm=setInterval(()=>{n=Math.min(n+t/50,t);el.textContent=Math.ceil(n);if(n>=t)clearInterval(tm)},35);
+      });
+    }).observe(document.querySelector('.hero-stats'));
 
-        // Chart.js - Evolution Chart
-        const evolutionCtx = document.getElementById('evolutionChart').getContext('2d');
-        new Chart(evolutionCtx, {
-            type: 'line',
-            data: {
-                labels: ['2022', '2023', '2024', '2025'],
-                datasets: [{
-                    label: 'Power BI',
-                    data: [40, 60, 80, 90],
-                    borderColor: '#3b82f6',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    tension: 0.4
-                }, {
-                    label: 'Python',
-                    data: [30, 50, 70, 80],
-                    borderColor: '#8b5cf6',
-                    backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                    tension: 0.4
-                }, {
-                    label: 'SQL',
-                    data: [50, 65, 80, 85],
-                    borderColor: '#06b6d4',
-                    backgroundColor: 'rgba(6, 182, 212, 0.1)',
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                scales: {
-                    y: { beginAtZero: true, max: 100, ticks: { color: '#e2e8f0' }, grid: { color: 'rgba(148, 163, 184, 0.1)' } },
-                    x: { ticks: { color: '#e2e8f0' }, grid: { display: false } }
-                },
-                plugins: {
-                    legend: { position: 'top', labels: { color: '#e2e8f0', padding: 20 } }
-                }
-            }
-        });
+    Chart.defaults.color='#94a3b8';
 
-        // Contact Form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
-            this.reset();
-        });
+    new Chart('skillsChart',{type:'radar',data:{labels:['Power BI','SQL','Python','PHP','Java','MongoDB'],datasets:[{label:'Niveau',data:[90,85,80,85,75,75],backgroundColor:'rgba(59,130,246,.15)',borderColor:'#3b82f6',borderWidth:2,pointBackgroundColor:'#3b82f6',pointBorderColor:'#0f172a',pointRadius:4,pointHoverRadius:6}]},options:{responsive:true,scales:{r:{beginAtZero:true,max:100,ticks:{stepSize:20,backdropColor:'transparent'},grid:{color:'rgba(148,163,184,.15)'},angleLines:{color:'rgba(148,163,184,.15)'},pointLabels:{color:'#e2e8f0',font:{size:12}}}},plugins:{legend:{labels:{color:'#e2e8f0',padding:16}}}}});
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(15, 23, 42, 0.98)';
-            } else {
-                navbar.style.background = 'rgba(15, 23, 42, 0.95)';
-            }
-        });
-    </script>
+    new Chart('languagesChart',{type:'doughnut',data:{labels:['Français','Anglais','Italien'],datasets:[{data:[60,30,10],backgroundColor:['rgba(59,130,246,.85)','rgba(139,92,246,.85)','rgba(6,182,212,.85)'],borderColor:'#0f172a',borderWidth:2}]},options:{responsive:true,cutout:'65%',plugins:{legend:{position:'bottom',labels:{color:'#e2e8f0',padding:16}}}}});
+
+    new Chart('evolutionChart',{type:'line',data:{labels:['2022','2023','2024','2025','2026'],datasets:[{label:'Power BI',data:[40,60,80,90,92],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.08)',fill:true,tension:.4,borderWidth:2.5,pointRadius:4},{label:'Python',data:[30,50,70,80,82],borderColor:'#8b5cf6',backgroundColor:'rgba(139,92,246,.08)',fill:true,tension:.4,borderWidth:2.5,pointRadius:4},{label:'SQL',data:[50,65,80,85,86],borderColor:'#06b6d4',backgroundColor:'rgba(6,182,212,.08)',fill:true,tension:.4,borderWidth:2.5,pointRadius:4},{label:'Talend',data:[null,null,null,null,70],borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.08)',fill:true,tension:.4,borderWidth:2.5,pointRadius:4}]},options:{responsive:true,interaction:{mode:'index',intersect:false},scales:{y:{beginAtZero:true,max:100,grid:{color:'rgba(255,255,255,.04)'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}},plugins:{legend:{position:'top',labels:{color:'#e2e8f0',padding:16}}}}});
+  </script>
 </body>
 </html>
