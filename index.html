@@ -163,9 +163,9 @@
 
   <section id="home" class="hero">
     <div class="container">
-      <div class="hero-badge"><span class="dot"></span> Data Analyst</div>
+      <div class="hero-badge"><span class="dot"></span> Data Analyst | BI Developer</div>
       <h1 class="word-reveal"><i class="fas fa-database"></i> Nassim Riahi</h1>
-      <p class="subtitle word-reveal-d"> Data Analyst & Développeur Business Intelligence</p>
+      <p class="subtitle word-reveal-d"> Data Analyst | BI Developer</p>
       <p class="hero-desc fade-up">Junior en transformation de données brutes en insights stratégiques. Spécialisé en Power BI, SQL, Python et solutions BI innovantes.</p>
 
       <div class="mb-4 fade-up">
@@ -225,17 +225,65 @@
           <div class="timeline-date">juillet. 2025 — oct. 2026</div>
           <div class="timeline-content">
             <img src="sicam.png" alt="SICAM" class="company-logo" onerror="this.style.display='none'">
-            <h3><i class="fas fa-building"></i> Développeur BI — SICAM Tunisia</h3>
+            <h3><i class="fas fa-building"></i> DData Analyst | BI Developer — SICAM Tunisia</h3>
             <ul>
-               <li><strong>Data Mart Stocks PDR/Consommables :</strong> Modélisation multi-sociétés (Sage X3 + GMAO Coswin) couvrant un portefeuille de plusieurs milliers de références. Implémentation de DAX avancée : classification ABC/Pareto, segmentation dynamique, alertes rupture/surstock. L'analyse a mis en évidence ~30 % de références sans mouvement sur 12 mois, permettant d'identifier le stock dormant et d'orienter les décisions de réduction du capital immobilisé.</li>
-               <li><strong>Tableau de bord Achats :</strong> Pilotage stratégique de la chaîne d'approvisionnement complète (DA, DP, BC, Arrivage, Facturation, Paiement). Identification des goulots d'étranglement et suivi du CA achat par fournisseur/article.</li>
-                <li>Développement d'un dashboard d'aide à la décision (CA, marges, tendances par client, article, famille)</li>
-                <li>Mise en place d'un cube de ventes sémantique en self-service analytics pour les équipes commerciale et ADV</li>
-                <li><strong>Commercial & Cube de Ventes</strong> : Pilotage des ventes et analyse des données commerciales</li>
-               <li><strong>Pipeline & Gouvernance d'usage Power BI :</strong> Conception et automatisation complète d'un pipeline de gouvernance d'usage (authentification par certificat, zéro interaction humaine), étendant l'historique exploitable de +540 % (28 → ~180 jours) par rapport à l'API Power BI native, via le journal d'audit Microsoft 365. Logique adaptative à deux phases (rattrapage historique → extraction quotidienne continue) avec déduplication garantissant 0 % de perte de données. Construction d'un tableau de bord interactif de suivi d'adoption (évolution mensuelle, répartition par action, usage par licence) destiné à la direction générale.</li>
-               <li><strong>Stock Produits Finis & Emballage :</strong> Création d'un rapport décisionnel multi-métiers (direction, finance, marketing) remplaçant les extractions manuelles. Pilotage des stocks PF/emballage par lot et par date → source de vérité unique, gain d'au moins 1 h par jour.</li>
-               <li><strong>Automatisation Finance :</strong> Déclenchement Power Automate éliminant le reporting manuel des soldes bancaires. Diffusion instantanée et fiable depuis Power BI vers l'équipe finance.</li>
-               <li><strong>Finance, Production & Administration :</strong> Élaboration de dashboards de pilotage financier (soldes, escompte, BFR) via Sage XRT et industriel via APIs REST. Administration Power BI Service (Gateways, RLS, accès métiers)</li>
+              <li><strong>Architecture BI, Gouvernance &amp; Administration Power BI :</strong>
+                <ul>
+                  <li>Déploiement d'une infrastructure BI d'entreprise (1 licence DEV → 1 licence TEST → 4 licences PROD).</li>
+                  <li>Administration de Power BI Service (Gateways, RLS, accès métiers) et structuration du parc de licences → ROI maximisé, accès conformes.</li>
+                </ul>
+              </li>
+
+              <li><strong>Dashboard Stocks PDR/Consommables :</strong>
+                <ul>
+                  <li>Consolidation de données issues de Sage X3 (ERP) et Coswin (GMAO) dans un modèle multi-sociétés (Procan, Sicam).</li>
+                  <li>Développement de tables calculées DAX : classification ABC (Pareto 80/20),segmentation dynamique et mise en évidence visuelledes rupture/surstock.</li>
+                  <li>L'analyse a mis en évidence ~30 % de références sans mouvement sur 12 mois, permettant d'identifier le stock dormant et d'orienter les décisions de réduction du capital immobilisé.</li>
+                </ul>
+              </li>
+
+              <li><strong>Dashboard Achats :</strong>
+                <ul>
+                  <li>Pilotage stratégique de la chaîne d'approvisionnement complète (DA, BC, Arrivage, Facturation, Paiement).</li>
+                  <li>Identification des goulots d'étranglement et suivi du CA achat par fournisseur/article.</li>
+                </ul>
+              </li>
+
+              <li><strong>Dashboard Commercial &amp; Cube de Ventes :</strong>
+                <ul>
+                  <li>Développement d'un dashboard d'aide à la décision (CA, marges, tendances par client, article, famille).</li>
+                  <li>Mise en place d'un cube de ventes sémantique en self-service analytics pour les équipes commerciale et ADV.</li>
+                </ul>
+              </li>
+
+              <li><strong>Pipeline &amp; Gouvernance d'usage Power BI :</strong>
+                <ul>
+                  <li>Conception et automatisation complète d'un pipeline de gouvernance d'usage (authentification par certificat, zéro interaction humaine).</li>
+                  <li>Historique exploitable étendu de +540 % (28 → ~180 jours) via le journal d'audit Microsoft 365.</li>
+                  <li>Logique adaptative à deux phases (rattrapage historique → extraction quotidienne) avec déduplication garantissant 0 % de perte de données.</li>
+                  <li>Construction d'un dashboard interactif de suivi d'adoption (évolution mensuelle, répartition par action, usage par licence) destiné à la direction générale.</li>
+                </ul>
+              </li>
+
+              <li><strong>Stock Produits Finis &amp; Emballage :</strong>
+                <ul>
+                  <li>Création d'un rapport décisionnel multi-métiers (direction, finance, marketing) remplaçant les extractions manuelles.</li>
+                  <li>Pilotage des stocks PF/emballage par lot et par date → source de vérité unique, gain d'au moins 1 h par jour.</li>
+                </ul>
+              </li>
+
+              <li><strong>Automatisation Finance :</strong>
+                <ul>
+                  <li>Déclenchement Power Automate éliminant le reporting manuel des soldes bancaires.</li>
+                  <li>Diffusion instantanée et fiable depuis Power BI vers l'équipe finance.</li>
+                </ul>
+              </li>
+
+              <li><strong>Pilotage Financier &amp; Industriel :</strong>
+                <ul>
+                  <li>Élaboration de dashboards de pilotage financier (soldes, escompte, BFR, trésorerie) via Sage XRT et de pilotage industriel via APIs REST.</li>
+                </ul>
+              </li>
             </ul>
           </div>
         </div>
@@ -341,7 +389,7 @@
               </li>
               <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
                 <span style="position:absolute;left:0;color:var(--accent)">▹</span>
-                Tableaux de bord de suivi des tendances d'échange par région et par catégorie de compétence
+                Dashboard de suivi des tendances d'échange par région et par catégorie de compétence
               </li>
             </ul>
             <div class="d-flex flex-wrap gap-2">
