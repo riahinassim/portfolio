@@ -58,6 +58,8 @@
 
   
     .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;z-index:1;padding:100px 20px}
+    .hero-photo{width:170px;height:170px;margin:0 auto 1.5rem;padding:4px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary),var(--accent));box-shadow:0 8px 30px oklch(0.623 0.214 251/.35)}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;border:4px solid var(--background);display:block}
     .hero-badge{display:inline-flex;align-items:center;gap:8px;background:oklch(0.623 0.214 251/.1);border:1px solid oklch(0.623 0.214 251/.3);border-radius:50px;padding:6px 16px;font-size:.78rem;color:var(--primary);margin-bottom:1.5rem;font-family:var(--mono)}
     .hero-badge .dot{width:8px;height:8px;background:oklch(.72 .17 142);border-radius:50%;animation:pulse-dot 2s infinite}
     .hero h1{font-size:4rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -69,9 +71,11 @@
     .btn-grad:hover{transform:translateY(-3px);box-shadow:0 6px 22px oklch(0.623 0.214 251/.5);color:#fff}
 
     
-    .hero-stats{display:flex;justify-content:center;gap:2.5rem;margin-top:3rem;flex-wrap:wrap}
     .stat-card{text-align:center;padding:1.75rem;background:var(--card);border-radius:calc(var(--radius)*2);border:1px solid var(--border);min-width:140px;backdrop-filter:blur(10px);transition:border-color .3s}
     .stat-card:hover{border-color:var(--border-h)}
+    .dash-kpis .stat-card{min-width:0;height:100%;padding:1.5rem 1rem;transition:all .3s}
+    .dash-kpis .stat-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+    .stat-icon{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;margin-bottom:.6rem;border-radius:10px;background:linear-gradient(135deg,oklch(0.623 0.214 251/.2),oklch(0.553 0.222 283/.2));border:1px solid var(--border);color:var(--primary);font-size:1.05rem}
     .stat-number{display:block;font-size:3rem;font-weight:800;color:var(--primary);font-family:var(--mono)}
     .stat-label{margin-top:.4rem;color:var(--muted-fg);font-size:.88rem}
 
@@ -125,6 +129,7 @@
     #scroll-top:hover{transform:translateY(-3px)}
 
     @media(max-width:768px){
+      .hero-photo{width:140px;height:140px}
       .hero h1{font-size:2.5rem}
       .subtitle{font-size:1.3rem}
       .timeline::before{left:0}
@@ -163,6 +168,7 @@
 
   <section id="home" class="hero">
     <div class="container">
+      <div class="hero-photo word-reveal"><img src="nassim.jpg" alt="Photo de Nassim Riahi" onerror="this.parentElement.style.display='none'"></div>
       <div class="hero-badge"><span class="dot"></span> Data Analyst | BI Developer</div>
       <h1 class="word-reveal"><i class="fas fa-database"></i> Nassim Riahi</h1>
       <p class="subtitle word-reveal-d"> Data Analyst | BI Developer</p>
@@ -177,22 +183,25 @@
           <a href="cv/CV_Nassim_Riahi_Data Analyst_ang.pdf"  download class="btn-grad"><i class="fas fa-download"></i> English</a>
         </div>
       </div>
-
-      <div class="fade-up">
-        <a href="#dashboard" class="btn-grad"><i class="fas fa-chart-bar"></i> Voir mon Dashboard</a>
-      </div>
-
-      <div class="hero-stats">
-        <div class="stat-card"><span class="stat-number" data-target="+1">0</span><span class="stat-label">+1 an d'Expérience</span></div>
-        <div class="stat-card"><span class="stat-number" data-target="15">0</span><span class="stat-label">Projets Réalisés</span></div>
-        <div class="stat-card"><span class="stat-number" data-target="33">0</span><span class="stat-label">Technologies Maîtrisées</span></div>
-      </div>
     </div>
   </section>
 
   <section id="dashboard" class="sec-alt">
     <div class="container">
       <h2 class="section-title fade-up"><i class="fas fa-chart-pie"></i> Mon Dashboard BI</h2>
+
+      <div class="row g-4 mb-4 dash-kpis">
+        <div class="col-md-4 col-12">
+          <div class="stat-card fade-up"><span class="stat-icon"><i class="fas fa-calendar-check"></i></span><span class="stat-number" data-target="+1">0</span><span class="stat-label">+1 an d'Expérience</span></div>
+        </div>
+        <div class="col-md-4 col-12">
+          <div class="stat-card fade-up"><span class="stat-icon"><i class="fas fa-diagram-project"></i></span><span class="stat-number" data-target="15">0</span><span class="stat-label">Projets Réalisés</span></div>
+        </div>
+        <div class="col-md-4 col-12">
+          <div class="stat-card fade-up"><span class="stat-icon"><i class="fas fa-layer-group"></i></span><span class="stat-number" data-target="33">0</span><span class="stat-label">Technologies Maîtrisées</span></div>
+        </div>
+      </div>
+
       <div class="row g-4">
         <div class="col-md-6">
           <div class="dash-card fade-up">
@@ -605,7 +614,7 @@
         const t=+el.dataset.target;let n=0;
         const tm=setInterval(()=>{n=Math.min(n+t/50,t);el.textContent=Math.ceil(n);if(n>=t)clearInterval(tm)},35);
       });
-    }).observe(document.querySelector('.hero-stats'));
+    }).observe(document.querySelector('.dash-kpis'));
 
     Chart.defaults.color='#94a3b8';
 
