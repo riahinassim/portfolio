@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Riahi Nassim — Data Analyst — Version Finale 1 PAGE (aérée)</title>
+  <title>Riahi Nassim — Data Analyst | BI Developer</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-
     :root {
       --background: oklch(0.113 0.023 254);
       --foreground: oklch(0.928 0.007 247);
@@ -30,7 +29,6 @@
     @keyframes fade-up      { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
     @keyframes glitch-shift { 0%,100%{transform:translate(0)} 33%{transform:translate(-2px,2px)} 66%{transform:translate(2px,-2px)} }
     @keyframes pulse-dot    { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.8)} }
-    @keyframes shimmer      { 0%{transform:translateX(-100%)} 100%{transform:translateX(200%)} }
 
     .word-reveal  { opacity:0; animation:word-reveal 1.2s cubic-bezier(.16,1,.3,1) .2s forwards }
     .word-reveal-d{ opacity:0; animation:word-reveal 1.2s cubic-bezier(.16,1,.3,1) .5s forwards }
@@ -38,7 +36,6 @@
     .fade-up      { opacity:0 }
     .fade-up.in   { animation:fade-up .7s ease forwards }
 
-    
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--primary) var(--background)}
     ::-webkit-scrollbar{width:5px}
@@ -48,7 +45,6 @@
     #bg-charts{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35}
     #progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));z-index:9999}
 
-    
     .navbar{background:oklch(0.113 0.023 254/.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);z-index:1000;transition:all .3s}
     .navbar-brand{font-weight:700;font-size:1.4rem;color:var(--primary)!important}
     .nav-link{color:var(--foreground)!important;transition:color .2s;position:relative}
@@ -56,7 +52,6 @@
     .nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--primary);transition:width .3s}
     .nav-link:hover::after{width:100%}
 
-  
     .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;z-index:1;padding:100px 20px}
     .hero-photo{width:170px;height:170px;margin:0 auto 1.5rem;padding:4px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary),var(--accent));box-shadow:0 8px 30px oklch(0.623 0.214 251/.35)}
     .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;border:4px solid var(--background);display:block}
@@ -66,11 +61,9 @@
     .subtitle{font-size:1.8rem;color:var(--accent);margin-bottom:1.5rem}
     .hero-desc{max-width:600px;margin:0 auto 2rem;opacity:.85}
 
-   
     .btn-grad{display:inline-flex;align-items:center;gap:.5rem;padding:12px 28px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;text-decoration:none;border-radius:50px;font-weight:600;transition:all .3s;box-shadow:0 4px 15px oklch(0.623 0.214 251/.3)}
     .btn-grad:hover{transform:translateY(-3px);box-shadow:0 6px 22px oklch(0.623 0.214 251/.5);color:#fff}
 
-    
     .stat-card{text-align:center;padding:1.75rem;background:var(--card);border-radius:calc(var(--radius)*2);border:1px solid var(--border);min-width:140px;backdrop-filter:blur(10px);transition:border-color .3s}
     .stat-card:hover{border-color:var(--border-h)}
     .dash-kpis .stat-card{min-width:0;height:100%;padding:1.5rem 1rem;transition:all .3s}
@@ -84,7 +77,6 @@
     .section-title{text-align:center;font-size:2.4rem;font-weight:800;margin-bottom:3rem}
     .section-title i{color:var(--primary);margin-right:.75rem}
 
-  
     .dash-card{background:var(--card);border-radius:calc(var(--radius)*2);padding:1.75rem;border:1px solid var(--border);transition:all .3s;height:100%;backdrop-filter:blur(12px);box-shadow:0 4px 20px rgba(0,0,0,.15)}
     .dash-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,.35);border-color:var(--border-h)}
     .card-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem}
@@ -115,9 +107,22 @@
     .timeline-content li::before{content:'▹';position:absolute;left:0;color:var(--accent)}
 
     .c-icon{width:46px;height:46px;background:linear-gradient(135deg,oklch(0.623 0.214 251/.2),oklch(0.553 0.222 283/.2));border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--primary);margin:0 auto .5rem}
-
     .project-img{width:100%;max-height:300px;object-fit:cover;border-radius:calc(var(--radius)*1.5);margin-bottom:1.5rem;border:1px solid var(--border)}
     .project-tag{background:oklch(0.623 0.214 251/.1);border:1px solid oklch(0.623 0.214 251/.3);padding:5px 14px;border-radius:50px;font-size:.78rem;font-weight:600;color:var(--primary)}
+
+    .academic-slider-container{position:relative;max-width:1100px;margin:0 auto;padding:0 10px}
+    .academic-slider-track{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;padding:1rem .25rem 1.5rem}
+    .academic-slider-track::-webkit-scrollbar{display:none}
+    .academic-slide{flex:0 0 calc(50% - 0.75rem);scroll-snap-align:start;min-width:320px}
+    @media(max-width:768px){.academic-slide{flex:0 0 100%;min-width:100%}}
+    .slider-nav-btn{position:absolute;top:45%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--secondary));border:1px solid var(--border);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all .3s cubic-bezier(.16,1,.3,1);box-shadow:0 6px 18px rgba(0,0,0,.4)}
+    .slider-nav-btn:hover{transform:translateY(-50%) scale(1.12);box-shadow:0 8px 24px oklch(0.623 0.214 251/.5);color:#fff}
+    .slider-prev{left:-22px}
+    .slider-next{right:-22px}
+    @media(max-width:992px){.slider-prev{left:5px}.slider-next{right:5px}}
+    .slider-dots{display:flex;justify-content:center;gap:8px;margin-top:1rem}
+    .slider-dot{width:10px;height:10px;border-radius:50%;background:oklch(1 0 0/.2);border:none;cursor:pointer;transition:all .3s ease;padding:0}
+    .slider-dot.active{width:28px;border-radius:10px;background:linear-gradient(90deg,var(--primary),var(--accent));box-shadow:0 0 10px oklch(0.623 0.214 251/.5)}
 
     footer{background:oklch(0.113 0.023 254/.97);border-top:1px solid var(--border);padding:2.5rem 0;text-align:center;position:relative;z-index:1}
     .social-links{display:flex;justify-content:center;gap:1rem;margin:1.5rem 0}
@@ -171,7 +176,7 @@
       <div class="hero-photo word-reveal"><img src="nassim.jpg" alt="Photo de Nassim Riahi" onerror="this.parentElement.style.display='none'"></div>
       <div class="hero-badge"><span class="dot"></span> Data Analyst | BI Developer</div>
       <h1 class="word-reveal"><i class="fas fa-database"></i> Nassim Riahi</h1>
-      <p class="subtitle word-reveal-d"> Data Analyst | BI Developer</p>
+      <p class="subtitle word-reveal-d">Data Analyst | BI Developer</p>
       <p class="hero-desc fade-up">Data Analyst | BI Developer avec 1 an et 3 mois d'expérience en milieu industriel. Spécialisé en Power BI, SQL, Sage X3 et automatisation.</p>
 
       <div class="mb-4 fade-up">
@@ -180,7 +185,7 @@
         </p>
         <div class="d-flex flex-wrap justify-content-center gap-3">
           <a href="cv/CV_Nassim_Riahi_Data Analyst_fr.pdf" download class="btn-grad"><i class="fas fa-download"></i> Français</a>
-          <a href="cv/CV_Nassim_Riahi_Data Analyst_ang.pdf"  download class="btn-grad"><i class="fas fa-download"></i> English</a>
+          <a href="cv/CV_Nassim_Riahi_Data Analyst_ang.pdf" download class="btn-grad"><i class="fas fa-download"></i> English</a>
         </div>
       </div>
     </div>
@@ -231,7 +236,7 @@
       <div class="timeline">
 
         <div class="timeline-item fade-up">
-          <div class="timeline-date">juil. 2025 — oct. 2026</div>
+          <div class="timeline-date">Juil. 2025 — Oct. 2026</div>
           <div class="timeline-content">
             <img src="sicam.png" alt="SICAM" class="company-logo" onerror="this.style.display='none'">
             <h3><i class="fas fa-building"></i> Data Analyst | BI Developer — SICAM Tunisie</h3>
@@ -297,19 +302,19 @@
           </div>
         </div>
 
-<div class="timeline-item fade-up">
+        <div class="timeline-item fade-up">
           <div class="timeline-date">Fév. 2025 — Mai 2025</div>
           <div class="timeline-content">
             <img src="tekboot.png" alt="Tekboot" class="company-logo" onerror="this.style.display='none'">
-            <h3><i class="fas fa-robot"></i> Stage PFE | IA & Data Warehousing — Tekboot Solutions</h3>
+            <h3><i class="fas fa-robot"></i> Data Engineer | IA — Tekboot Solutions</h3>
             <ul>
-               <li>Mise en place d’un Data Warehouse centralisant les données RH pour l’analyse des KPI de recrutement</li>
-               <li>Traitement automatisé de documents non structurés (MongoDB, Python)</li>
-               <li>Moteur de matching intelligent LLM (OpenAI, LangChain) pour le scoring des candidatures</li>
-               <li>Implémentation d'un modèle RAG pour expliquer le score de matching attribué à chaque CV, rendant les décisions de présélection transparentes</li>
-             </ul>
-           </div>
-         </div>
+              <li>Mise en place d’un Data Warehouse centralisant les données RH pour l’analyse des KPI de recrutement.</li>
+              <li>Traitement automatisé de documents non structurés (MongoDB, Python).</li>
+              <li>Moteur de matching intelligent LLM (OpenAI, LangChain) pour le scoring des candidatures.</li>
+              <li>Implémentation d'un modèle RAG pour expliquer le score de matching attribué à chaque CV, rendant les décisions de présélection transparentes.</li>
+            </ul>
+          </div>
+        </div>
 
         <div class="timeline-item fade-up">
           <div class="timeline-date">Juin 2024 — Août 2024</div>
@@ -317,8 +322,8 @@
             <img src="mob.png" alt="Mobelite" class="company-logo" onerror="this.style.display='none'">
             <h3><i class="fas fa-laptop-code"></i> Développeur Web — Mobelite Labs</h3>
             <ul>
-              <li>Création d'un site web avec Symfony</li>
-              <li>Développement d'une application e-commerce d'articles de design animé</li>
+              <li>Création d'un site web avec Symfony.</li>
+              <li>Développement d'une application e-commerce d'articles de design animé.</li>
             </ul>
           </div>
         </div>
@@ -341,8 +346,7 @@
           </div>
         </div>
 
-
-<div class="timeline-item fade-up">
+        <div class="timeline-item fade-up">
           <div class="timeline-date">2022</div>
           <div class="timeline-content">
             <h3><i class="fas fa-school"></i> Baccalauréat en Sciences Informatiques</h3>
@@ -350,7 +354,7 @@
             <p style="color:var(--muted-fg);font-size:.9rem">Diplôme national de fin d'études secondaires avec spécialisation en sciences informatiques</p>
           </div>
         </div>
-</div>
+
       </div>
     </div>
   </section>
@@ -360,112 +364,54 @@
       <h2 class="section-title fade-up"><i class="fas fa-diagram-project"></i> Projets Personnels</h2>
       <div class="row g-4 justify-content-center">
         <div class="col-lg-9">
-<div class="dash-card fade-up">
-              <div style="text-align:center;padding:2.5rem 1.5rem 1rem;background:linear-gradient(135deg,oklch(0.623 0.214 251/.12),oklch(0.553 0.222 283/.12));border-radius:calc(var(--radius)*2) calc(var(--radius)*2) 0 0;margin:-1.75rem -1.75rem 1.5rem">
-                <div style="width:80px;height:80px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:16px;display:inline-flex;align-items:center;justify-content:center;font-size:2.2rem;color:#fff;box-shadow:0 8px 24px oklch(0.623 0.214 251/.35)">
-                  <i class="fas fa-people-arrows"></i>
-                </div>
-              </div>
-              <div class="card-head">
-                <h3 class="card-ttl">SkillSwap — Plateforme d'échange de compétences entre voisins</h3></div>
-              <p style="color:var(--muted-fg);margin-bottom:1.25rem">
-                Plateforme communautaire permettant aux habitants d'une même région d'échanger leurs
-                compétences (bricolage, cours particuliers, jardinage, cuisine, etc.) sans transaction
-                monétaire, en mettant en relation les voisins autour de leurs savoir-faire respectifs.
-              </p>
-              <ul style="list-style:none;padding:0;margin-bottom:1.25rem">
-                <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
-                  <span style="position:absolute;left:0;color:var(--accent)">▹</span>
-                  Développement de la plateforme web full-stack avec PHP et PostgreSQL pour la gestion des profils, des compétences et des échanges entre voisins
-                </li>
-                <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
-                  <span style="position:absolute;left:0;color:var(--accent)">▹</span>
-                  Modélisation d'un <strong>Data Warehouse</strong> avec <strong>Talend</strong> pour centraliser les profils, les compétences et l'historique des échanges
-                </li>
-                <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
-                  <span style="position:absolute;left:0;color:var(--accent)">▹</span>
-                  Construction de pipelines ETL avec Talend Open Studio pour l'intégration et la qualité des données
-                </li>
-                <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
-                  <span style="position:absolute;left:0;color:var(--accent)">▹</span>
-                  Dashboard de suivi des tendances d'échange par région et par compétence
-                </li>
-              </ul>
-              <video class="project-img" style="width:100%;max-height:400px;object-fit:cover;border-radius:calc(var(--radius)*1.5);margin-bottom:1.5rem;border:1px solid var(--border)" controls>
-                <source src="vd_powerBI.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la lecture de vidéos.
-              </video>
-              <p style="color:var(--muted-fg);margin-bottom:1.25rem">
-                Situation. 470 échanges ont été réalisés, en hausse de 13 % en 2026 par rapport à 2025 (comparaison sur des périodes de même durée). Les crédits transférés culminent en février et mars avec 98 crédits, tandis que Tunis et Sfax concentrent à elles seules 27 % de l’ensemble des échanges.
-              </p>
-              <p style="color:var(--muted-fg);margin-bottom:1.25rem">
-                Tension. L'offre couvre la demande : 1,39 compétence proposée pour 1 recherchée. Mais l'activité repose sur peu de choses : 8 compétences portent plus de la moitié des échanges, et 108 sur 150 n'ont jamais servi.
-              </p>
-              <p style="color:var(--muted-fg);margin-bottom:1.25rem">
-                Action. Promouvoir les compétences dormantes. Recruter en Psychologie & Coaching, où la demande dépasse l'offre.
-              </p>
-              <div class="d-flex flex-wrap gap-2">
-                <span class="project-tag">Talend</span>
-                <span class="project-tag">Data Warehouse</span>
-                <span class="project-tag">Power BI</span>
-                <span class="project-tag">DAX</span>
+          <div class="dash-card fade-up">
+            <div style="text-align:center;padding:2.5rem 1.5rem 1rem;background:linear-gradient(135deg,oklch(0.623 0.214 251/.12),oklch(0.553 0.222 283/.12));border-radius:calc(var(--radius)*2) calc(var(--radius)*2) 0 0;margin:-1.75rem -1.75rem 1.5rem">
+              <div style="width:80px;height:80px;background:linear-gradient(135deg,var(--primary),var(--secondary));border-radius:16px;display:inline-flex;align-items:center;justify-content:center;font-size:2.2rem;color:#fff;box-shadow:0 8px 24px oklch(0.623 0.214 251/.35)">
+                <i class="fas fa-people-arrows"></i>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  <section id="academic" class="sec-alt">
-    <div class="container">
-      <h2 class="section-title fade-up"><i class="fas fa-graduation-cap"></i> Projets Académiques</h2>
-      <div class="row g-4 justify-content-center">
-        <div class="col-lg-10">
-          <div class="dash-card fade-up">
-            <div class="card-head"><div class="card-icon"><i class="fas fa-book"></i></div><h3 class="card-ttl">Bibliothèque Intelligente</h3></div>
-            <p style="color:var(--muted-fg);margin-bottom:1.25rem">Application web sous Django intégrant un Chatbot IA (API Gemini) pour l'assistance à la recherche documentaire.</p>
-            <div class="d-flex flex-wrap gap-2">
-              <span class="project-tag">Django</span>
-              <span class="project-tag">Python</span>
-              <span class="project-tag">Gemini API</span>
-              <span class="project-tag">NLP</span>
-              <span class="project-tag">SQL</span>
+            <div class="card-head">
+              <h3 class="card-ttl">SkillSwap — Plateforme d'échange de compétences entre voisins</h3>
             </div>
-          </div>
-        </div>
-        <div class="col-lg-10">
-          <div class="dash-card fade-up">
-            <div class="card-head"><div class="card-icon"><i class="fas fa-wallet"></i></div><h3 class="card-ttl">Système de Gestion Budgétaire</h3></div>
-            <p style="color:var(--muted-fg);margin-bottom:1.25rem">Solution de suivi collaboratif développée avec Node.js et PostgreSQL permettant la gestion des transactions, des catégories et l'envoi d'alertes automatiques.</p>
+            <p style="color:var(--muted-fg);margin-bottom:1.25rem">
+              Plateforme communautaire permettant aux habitants d'une même région d'échanger leurs compétences (bricolage, cours particuliers, jardinage, cuisine, etc.) sans transaction monétaire, en mettant en relation les voisins autour de leurs savoir-faire respectifs.
+            </p>
+            <ul style="list-style:none;padding:0;margin-bottom:1.25rem">
+              <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
+                <span style="position:absolute;left:0;color:var(--accent)">▹</span>
+                Développement de la plateforme web full-stack avec PHP et PostgreSQL pour la gestion des profils, des compétences et des échanges entre voisins
+              </li>
+              <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
+                <span style="position:absolute;left:0;color:var(--accent)">▹</span>
+                Modélisation d'un <strong>Data Warehouse</strong> avec <strong>Talend</strong> pour centraliser les profils, les compétences et l'historique des échanges
+              </li>
+              <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
+                <span style="position:absolute;left:0;color:var(--accent)">▹</span>
+                Construction de pipelines ETL avec Talend Open Studio pour l'intégration et la qualité des données
+              </li>
+              <li style="padding-left:1.4rem;margin-bottom:.5rem;position:relative;font-size:.9rem;color:var(--muted-fg)">
+                <span style="position:absolute;left:0;color:var(--accent)">▹</span>
+                Dashboard de suivi des tendances d'échange par région et par compétence
+              </li>
+            </ul>
+            <video class="project-img" style="width:100%;max-height:400px;object-fit:cover;border-radius:calc(var(--radius)*1.5);margin-bottom:1.5rem;border:1px solid var(--border)" controls>
+              <source src="vd_powerBI.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la lecture de vidéos.
+            </video>
+            <p style="color:var(--muted-fg);margin-bottom:1.25rem">
+              Situation. 470 échanges ont été réalisés, en hausse de 13 % en 2026 par rapport à 2025 (comparaison sur des périodes de même durée). Les crédits transférés culminent en février et mars avec 98 crédits, tandis que Tunis et Sfax concentrent à elles seules 27 % de l’ensemble des échanges.
+            </p>
+            <p style="color:var(--muted-fg);margin-bottom:1.25rem">
+              Tension. L'offre couvre la demande : 1,39 compétence proposée pour 1 recherchée. Mais l'activité repose sur peu de choses : 8 compétences portent plus de la moitié des échanges, et 108 sur 150 n'ont jamais servi.
+            </p>
+            <p style="color:var(--muted-fg);margin-bottom:1.25rem">
+              Action. Promouvoir les compétences dormantes. Recruter en Psychologie & Coaching, où la demande dépasse l'offre.
+            </p>
             <div class="d-flex flex-wrap gap-2">
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">PostgreSQL</span>
-              <span class="project-tag">API REST</span>
-              <span class="project-tag">JavaScript</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-10">
-          <div class="dash-card fade-up">
-            <div class="card-head"><div class="card-icon"><i class="fas fa-car"></i></div><h3 class="card-ttl">Gestion de Vente Pièces Auto</h3></div>
-            <p style="color:var(--muted-fg);margin-bottom:1.25rem">Application web Full-stack avec gestion de stock développée sous Laravel (PHP).</p>
-            <div class="d-flex flex-wrap gap-2">
-              <span class="project-tag">Laravel</span>
-              <span class="project-tag">PHP</span>
-              <span class="project-tag">MySQL</span>
-              <span class="project-tag">Full-stack</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-10">
-          <div class="dash-card fade-up">
-            <div class="card-head"><div class="card-icon"><i class="fas fa-car-side"></i></div><h3 class="card-ttl">Système de Location de Voitures</h3></div>
-            <p style="color:var(--muted-fg);margin-bottom:1.25rem">Application desktop avec interface JavaFX et persistance de données SQL.</p>
-            <div class="d-flex flex-wrap gap-2">
-              <span class="project-tag">Java</span>
-              <span class="project-tag">JavaFX</span>
-              <span class="project-tag">SQL</span>
-              <span class="project-tag">Desktop App</span>
+              <span class="project-tag">Talend</span>
+              <span class="project-tag">Data Warehouse</span>
+              <span class="project-tag">Power BI</span>
+              <span class="project-tag">DAX</span>
             </div>
           </div>
         </div>
@@ -473,86 +419,189 @@
     </div>
   </section>
 
-  <section id="skills">
-  <div class="container">
-    <h2 class="section-title fade-up"><i class="fas fa-cogs"></i> Compétences Techniques</h2>
-    <div class="row g-4">
+  <section id="academic" class="sec-alt">
+    <div class="container">
+      <h2 class="section-title fade-up"><i class="fas fa-graduation-cap"></i> Projets Académiques</h2>
+      
+      <div class="academic-slider-container fade-up">
+        <button class="slider-nav-btn slider-prev" id="acadPrev" aria-label="Projet précédent">
+          <i class="fas fa-chevron-left"></i>
+        </button>
 
-      <div class="col-md-6">
-        <div class="dash-card fade-up">
-          <div class="card-head"><div class="card-icon"><i class="fas fa-chart-line"></i></div><h3 class="card-ttl">Business Intelligence & Visualisation</h3></div>
-          <div class="skill-bar"><div class="skill-row"><span>Power BI (Desktop, Service, DAX)</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div></div>
-          <div class="skill-bar"><div class="skill-row"><span>Data Storytelling & Visualisation</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
-          <div class="skill-bar"><div class="skill-row"><span>SQL Server & PostgreSQL</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
-          <div class="skill-bar"><div class="skill-row"><span>Excel Avancé (TCD, Power Query)</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
-          <div class="skill-bar"><div class="skill-row"><span>Power Automate</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
-          <div class="skill-bar"><div class="skill-row"><span>Data Warehouse & Modélisation</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
-          <div class="skill-bar"><div class="skill-row"><span>Talend ETL</span><span class="skill-pct">70%</span></div><div class="skill-track"><div class="skill-fill" style="width:70%"></div></div></div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="dash-card fade-up">
-          <div class="card-head"><div class="card-icon"><i class="fas fa-code"></i></div><h3 class="card-ttl">Langages & Analyse de Données</h3></div>
-          <div class="skill-bar"><div class="skill-row"><span>SQL Avancé (CTE, Fenêtrage)</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div></div>
-          <div class="skill-bar"><div class="skill-row"><span>DAX & Langage M</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
-          <div class="skill-bar"><div class="skill-row"><span>Python (Pandas, NumPy)</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
-          <div class="skill-bar"><div class="skill-row"><span>PHP</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
-          <div class="skill-bar"><div class="skill-row"><span>JavaScript</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-fill" style="width:75%"></div></div></div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="dash-card fade-up">
-          <div class="card-head"><div class="card-icon"><i class="fas fa-layer-group"></i></div><h3 class="card-ttl">Écosystèmes Métier & Frameworks</h3></div>
-          <div class="row g-2">
-            <div class="col-6"><div class="skill-tag"><i class="fas fa-database"></i> ERP Sage X3</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fas fa-chart-pie"></i> Power Query</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fab fa-symfony"></i> Symfony</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fab fa-laravel"></i> Laravel</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fab fa-node-js"></i> Node.js</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fas fa-leaf"></i> MongoDB</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fab fa-python"></i> Django</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fas fa-plug"></i> APIs REST</div></div>
+        <div class="academic-slider-track" id="acadTrack">
+          
+          <div class="academic-slide">
+            <div class="dash-card h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="card-head">
+                  <div class="card-icon"><i class="fas fa-book"></i></div>
+                  <h3 class="card-ttl">Bibliothèque Intelligente</h3>
+                </div>
+                <p style="color:var(--muted-fg);margin-bottom:1.25rem">
+                  Application web sous Django intégrant un Chatbot IA (API Gemini) pour l'assistance à la recherche documentaire et la recommandation d'ouvrages.
+                </p>
+              </div>
+              <div class="d-flex flex-wrap gap-2 pt-2">
+                <span class="project-tag">Django</span>
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Gemini API</span>
+                <span class="project-tag">NLP</span>
+                <span class="project-tag">SQL</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="col-md-6">
-        <div class="dash-card fade-up">
-          <div class="card-head"><div class="card-icon"><i class="fas fa-brain"></i></div><h3 class="card-ttl">IA & Data Science</h3></div>
-          <div class="row g-2">
-            <div class="col-6"><div class="skill-tag"><i class="fas fa-robot"></i> OpenAI API</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fas fa-link"></i> LangChain</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fas fa-search"></i> Architecture RAG</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fas fa-brain"></i> Deep Learning (LSTM)</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fas fa-chart-line"></i> Prophet (Séries temp.)</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fas fa-comments"></i> NLP</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fas fa-stream"></i> Streamlit</div></div>
-            <div class="col-6"><div class="skill-tag"><i class="fas fa-chart-area"></i> Analyse prédictive</div></div>
+          <div class="academic-slide">
+            <div class="dash-card h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="card-head">
+                  <div class="card-icon"><i class="fas fa-wallet"></i></div>
+                  <h3 class="card-ttl">Système de Gestion Budgétaire</h3>
+                </div>
+                <p style="color:var(--muted-fg);margin-bottom:1.25rem">
+                  Solution de suivi collaboratif développée avec Node.js et PostgreSQL permettant la gestion des transactions, des catégories et l'envoi d'alertes automatiques.
+                </p>
+              </div>
+              <div class="d-flex flex-wrap gap-2 pt-2">
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">PostgreSQL</span>
+                <span class="project-tag">API REST</span>
+                <span class="project-tag">JavaScript</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div class="col-12">
-        <div class="dash-card fade-up">
-          <div class="card-head"><div class="card-icon"><i class="fas fa-cloud"></i></div><h3 class="card-ttl">Big Data, Cloud & DevOps</h3></div>
-          <div class="row text-center g-3">
-            <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fas fa-cubes"></i></div><p class="mb-0 small">Microsoft Fabric</p></div>
-            <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fas fa-bolt"></i></div><p class="mb-0 small">PySpark</p></div>
-            <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fas fa-database"></i></div><p class="mb-0 small">Spark SQL</p></div>
-            <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fab fa-aws"></i></div><p class="mb-0 small">AWS (S3, Lambda)</p></div>
-            <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fab fa-docker"></i></div><p class="mb-0 small">Docker</p></div>
-            <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fab fa-git-alt"></i></div><p class="mb-0 small">Git / GitHub</p></div>
-            <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fas fa-server"></i></div><p class="mb-0 small">OneLake & Lakehouse</p></div>
-            <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fab fa-linux"></i></div><p class="mb-0 small">Linux / Bash</p></div>
+          <div class="academic-slide">
+            <div class="dash-card h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="card-head">
+                  <div class="card-icon"><i class="fas fa-car"></i></div>
+                  <h3 class="card-ttl">Gestion de Vente Pièces Auto</h3>
+                </div>
+                <p style="color:var(--muted-fg);margin-bottom:1.25rem">
+                  Application web Full-stack avec gestion de stock, catalogue pièces et suivi des commandes développée sous Laravel (PHP).
+                </p>
+              </div>
+              <div class="d-flex flex-wrap gap-2 pt-2">
+                <span class="project-tag">Laravel</span>
+                <span class="project-tag">PHP</span>
+                <span class="project-tag">MySQL</span>
+                <span class="project-tag">Full-stack</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
+          <div class="academic-slide">
+            <div class="dash-card h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="card-head">
+                  <div class="card-icon"><i class="fas fa-car-side"></i></div>
+                  <h3 class="card-ttl">Système de Location de Voitures</h3>
+                </div>
+                <p style="color:var(--muted-fg);margin-bottom:1.25rem">
+                  Application desktop ergonomique avec interface JavaFX et persistance de données SQL pour la gestion complète des réservations de véhicules.
+                </p>
+              </div>
+              <div class="d-flex flex-wrap gap-2 pt-2">
+                <span class="project-tag">Java</span>
+                <span class="project-tag">JavaFX</span>
+                <span class="project-tag">SQL</span>
+                <span class="project-tag">Desktop App</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="slider-nav-btn slider-next" id="acadNext" aria-label="Projet suivant">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="slider-dots" id="acadDots"></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title fade-up"><i class="fas fa-cogs"></i> Compétences Techniques</h2>
+      <div class="row g-4">
+
+        <div class="col-md-6">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-chart-line"></i></div><h3 class="card-ttl">Business Intelligence & Visualisation</h3></div>
+            <div class="skill-bar"><div class="skill-row"><span>Power BI (Desktop, Service, DAX)</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>Data Storytelling & Visualisation</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>SQL Server & PostgreSQL</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>Excel Avancé (TCD, Power Query)</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>Power Automate</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>Data Warehouse & Modélisation</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>Talend ETL</span><span class="skill-pct">70%</span></div><div class="skill-track"><div class="skill-fill" style="width:70%"></div></div></div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-code"></i></div><h3 class="card-ttl">Langages & Analyse de Données</h3></div>
+            <div class="skill-bar"><div class="skill-row"><span>SQL Avancé (CTE, Fenêtrage)</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>DAX & Langage M</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>Python (Pandas, NumPy)</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>PHP</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
+            <div class="skill-bar"><div class="skill-row"><span>JavaScript</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-fill" style="width:75%"></div></div></div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-layer-group"></i></div><h3 class="card-ttl">Écosystèmes Métier & Frameworks</h3></div>
+            <div class="row g-2">
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-database"></i> ERP Sage X3</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-chart-pie"></i> Power Query</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fab fa-symfony"></i> Symfony</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fab fa-laravel"></i> Laravel</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fab fa-node-js"></i> Node.js</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-leaf"></i> MongoDB</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fab fa-python"></i> Django</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-plug"></i> APIs REST</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-brain"></i></div><h3 class="card-ttl">IA & Data Science</h3></div>
+            <div class="row g-2">
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-robot"></i> OpenAI API</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-link"></i> LangChain</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-search"></i> Architecture RAG</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-brain"></i> Deep Learning (LSTM)</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-chart-line"></i> Prophet (Séries temp.)</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-comments"></i> NLP</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-stream"></i> Streamlit</div></div>
+              <div class="col-6"><div class="skill-tag"><i class="fas fa-chart-area"></i> Analyse prédictive</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="dash-card fade-up">
+            <div class="card-head"><div class="card-icon"><i class="fas fa-cloud"></i></div><h3 class="card-ttl">Big Data, Cloud & DevOps</h3></div>
+            <div class="row text-center g-3">
+              <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fas fa-cubes"></i></div><p class="mb-0 small">Microsoft Fabric</p></div>
+              <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fas fa-bolt"></i></div><p class="mb-0 small">PySpark</p></div>
+              <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fas fa-database"></i></div><p class="mb-0 small">Spark SQL</p></div>
+              <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fab fa-aws"></i></div><p class="mb-0 small">AWS (S3, Lambda)</p></div>
+              <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fab fa-docker"></i></div><p class="mb-0 small">Docker</p></div>
+              <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fab fa-git-alt"></i></div><p class="mb-0 small">Git / GitHub</p></div>
+              <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fas fa-server"></i></div><p class="mb-0 small">OneLake & Lakehouse</p></div>
+              <div class="col-md-3 col-6"><div class="card-icon mx-auto mb-2"><i class="fab fa-linux"></i></div><p class="mb-0 small">Linux / Bash</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <section id="contact" class="sec-alt">
     <div class="container">
@@ -570,7 +619,7 @@
             </div>
             <div class="col-md-4 fade-up">
               <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
-              <p style="margin-top:.5rem">Béja, Tunisie</p>
+              <p style="margin-top:.5rem">Tunis, Tunisie</p>
             </div>
           </div>
         </div>
@@ -584,7 +633,8 @@
       <p style="color:var(--muted-fg)">Data Analyst | BI Developer | Transformez vos données en décisions</p>
       <div class="social-links">
         <a href="https://www.linkedin.com/in/nassim-riahi-92b029399" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/riahinassim" target="_blank" rel="noopener" class="social-link" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>      </div>
+        <a href="https://github.com/riahinassim" target="_blank" rel="noopener" class="social-link" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+      </div>
       <p style="font-size:.8rem;color:var(--muted-fg)">© 2026 Riahi Nassim</p>
     </div>
   </footer>
@@ -679,6 +729,73 @@
         requestAnimationFrame(animate);
       }
       animate();
+    })();
+
+    (function(){
+      const track = document.getElementById('acadTrack');
+      const prevBtn = document.getElementById('acadPrev');
+      const nextBtn = document.getElementById('acadNext');
+      const dotsContainer = document.getElementById('acadDots');
+      if(!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+      const slides = track.querySelectorAll('.academic-slide');
+
+      function getVisibleCount() {
+        return window.innerWidth > 768 ? 2 : 1;
+      }
+
+      function updateSlider() {
+        const visible = getVisibleCount();
+        const totalPages = Math.ceil(slides.length / visible);
+
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalPages; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', 'Page ' + (i + 1));
+          dot.addEventListener('click', () => {
+            const targetSlide = slides[i * visible];
+            if (targetSlide) {
+              targetSlide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            }
+          });
+          dotsContainer.appendChild(dot);
+        }
+        checkNav();
+      }
+
+      function checkNav() {
+        const dots = dotsContainer.querySelectorAll('.slider-dot');
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        const currentScroll = track.scrollLeft;
+
+        let pageIdx = 0;
+        if (maxScroll > 0) {
+          pageIdx = Math.round((currentScroll / maxScroll) * (dots.length - 1));
+        }
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === pageIdx);
+        });
+
+        prevBtn.style.opacity = currentScroll <= 15 ? '0.3' : '1';
+        prevBtn.style.pointerEvents = currentScroll <= 15 ? 'none' : 'auto';
+
+        nextBtn.style.opacity = currentScroll >= maxScroll - 15 ? '0.3' : '1';
+        nextBtn.style.pointerEvents = currentScroll >= maxScroll - 15 ? 'none' : 'auto';
+      }
+
+      nextBtn.addEventListener('click', () => {
+        track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+      });
+
+      prevBtn.addEventListener('click', () => {
+        track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+      });
+
+      track.addEventListener('scroll', checkNav);
+      window.addEventListener('resize', updateSlider);
+
+      updateSlider();
     })();
   </script>
 </body>
